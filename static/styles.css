@@ -1,0 +1,15 @@
+body {
+  background-color: #f2f2f2; /* Change the background color to your desired color */
+}
+
+header {
+  padding: 20px; /* Adjust the padding to create space around the header */
+}
+
+main {
+  padding: 20px; /* Adjust the padding to create space around the main content */
+}
+
+p {
+  margin-bottom: 10px; /* Add some bottom margin to paragraphs for spacing */
+}
