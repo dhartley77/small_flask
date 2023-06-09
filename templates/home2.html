@@ -8,8 +8,8 @@
 </head>
 <body>
     <header>
-        <h1>Upload in Flask</h1>
-        <p>Submit .pt file for testing</p>
+        <h1>Trojan AI Detection</h1>
+        <p>Submit model (.pt) file for testing</p>
     </header>
 
     <main>
@@ -20,11 +20,11 @@
         </form>
 
         {% if file_uploaded %}
-            <p style="color: green;">File uploaded successfully</p>
+            <p style="color: #D3D3D3;">File uploaded successfully</p>
         {% endif %}
 
         <form action="/result" target="_blank">
-            <button type="submit">Some text for now</button>
+            <button type="submit">Run Inference</button>
         </form>
     </main>
 </body>
