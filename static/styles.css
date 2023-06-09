@@ -1,5 +1,11 @@
 body {
-  background-color: #f2f2f2; /* Change the background color to your desired color */
+  background-color: #4682B4; /* Change the background color to your desired
+   color */
+  color: #ffffff; /* Set text color to white for better contrast */
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Ensures the body covers the full height of the viewport */
+  text-align: center;
 }
 
 header {
