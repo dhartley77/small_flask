@@ -3,7 +3,7 @@ import os
 import numpy as np
 import pickle
 from werkzeug.utils import secure_filename
-import torch
+#import torch
 import subprocess
 from torchvision.models import inception_v3
 
@@ -45,38 +45,35 @@ def Result():
     result = os.path.join(app.root_path, mdl_file_path)
     if result.endswith('.pt'):  # Assuming it's a PyTorch model file
         # Load the input model
-        input_model = torch.load(result, map_location=torch.device('cpu'))
+        #input_model = torch.load(result, map_location=torch.device('cpu'))
         # Load the testing model
         command = [
-        "python",
-        "entrypoint.py",
-        "infer",
-        "--model_filepath",
-        "./model/id-00000002/model.pt ",
-        "--result_filepath",
-        "./output.txt ",
-        "--scratch_dirpath",
-        "./scratch",
-        "--examples_dirpath",
-        "./model/id-00000002/clean-example-data/",
-        #"--round_training_dataset_dirpath",
-        #"<round_training_dirpath>",
-        "--metaparameters_filepath",
-        "./metaparameters.json",
-        "--schema_filepath",
-        "./metaparameters_schema.json",
-        "--learned_parameters_dirpath",
-        "./new_learned_parameters"
-    ]
+            "python",
+            "entrypoint.py",
+            "infer",
+            "--model_filepath=result",
+            "--result_filepath=output.txt",
+            "--scratch_dirpath=scratch/",
+            "--examples_dirpath=model/id-00000002/clean-example-data/",
+            "--round_training_dataset_dirpath=/this/filepath/does/nothing",
+            "--metaparameters_filepath=new_learned_parameters/metaparameters.json",
+            "--schema_filepath=metaparameters_schema.json",
+            "--learned_parameters_dirpath=new_learned_parameters/",
+            "--scale_parameters_filepath=scale_params.npy"
+        ]
 
     result_m = subprocess.run(command, check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, encoding="utf-8")
-    breakpoint()
+    #, stdout=subprocess.PIPE,
+    #breakpoint()
     output = result_m.stdout  # Captured standard output
     error = result_m.stderr  # Captured error output
 
     # Print the captured output and error
-    print("Output:", output)
-    print("Error:", error)
+    #print("Output:", output)
+    #print("Error:", error)
+
+    #will need to read output.txt file for prediction text
+    return render_template('result.html', prediction_text=output)
 
 
 
